@@ -52,7 +52,7 @@ void findAllCodes(const char *path)
                 {
                         sprintf(target, "%s/%s", path, fa.name);
                         total += countLines(target);
-                }while (_findnext(handle, &fa) == 0);
+                } while(_findnext(handle, &fa) == 0);
         }
     
         _findclose(handle);
@@ -65,7 +65,7 @@ void findALLDirs(const char *path)
         char thePath[MAX];
         
         strcpy(thePath, path);
-        if((handle = _findfirst(strcat(thePath, "/*"), &fa)) == -1L)
+        if ((handle = _findfirst(strcat(thePath, "/*"), &fa)) == -1L)
         {
                 fprintf(stderr, "The path %s is wrong!\n",path);
                 return;
@@ -76,7 +76,7 @@ void findALLDirs(const char *path)
                 if (!strcmp(fa.name, ".") || !strcmp(fa.name, ".."))
                         continue;
                     
-                if( fa.attrib == _A_SUBDIR)
+                if (fa.attrib == _A_SUBDIR)
                 {        
                         sprintf(thePath, "%s/%s", path, fa.name);
                         findAllCodes(thePath);
